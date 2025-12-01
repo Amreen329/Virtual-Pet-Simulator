@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virtual Pet Simulator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <h1>Virtual Pet Simulator</h1>
+        <p class="subtitle">Keep your pet happy, fed, and full of energy!</p>
+      </header>
+
+      <main class="app-main">
+        <section class="pet-panel">
+          <div class="scene">
+            <div class="background">
+              <div class="sun"></div>
+              <div class="moon"></div>
+              <div class="cloud cloud-1"></div>
+              <div class="cloud cloud-2"></div>
+            </div>
+            <div class="ground"></div>
+
+            <div class="pet-container">
+              <div id="pet" class="pet state-happy">
+                <div class="pet-face">
+                  <div class="pet-ear ear-left"></div>
+                  <div class="pet-ear ear-right"></div>
+                  <div class="pet-eye eye-left"></div>
+                  <div class="pet-eye eye-right"></div>
+                  <div class="pet-mouth"></div>
+                  <div class="pet-blush blush-left"></div>
+                  <div class="pet-blush blush-right"></div>
+                </div>
+                <div class="pet-body"></div>
+                <div class="pet-tail"></div>
+              </div>
+            </div>
+          </div>
+
+          <p id="pet-state-text" class="pet-state-text">Your pet feels great!</p>
+        </section>
+
+        <section class="status-panel">
+          <h2>Pet Status</h2>
+          <div class="status-item">
+            <span class="status-label">Hunger</span>
+            <div class="status-bar-wrapper" aria-label="Hunger level" role="img">
+              <div id="hunger-bar" class="status-bar fill-good"></div>
+            </div>
+            <span id="hunger-value" class="status-value">50</span>
+          </div>
+
+          <div class="status-item">
+            <span class="status-label">Happiness</span>
+            <div class="status-bar-wrapper" aria-label="Happiness level" role="img">
+              <div id="happiness-bar" class="status-bar fill-good"></div>
+            </div>
+            <span id="happiness-value" class="status-value">80</span>
+          </div>
+
+          <div class="status-item">
+            <span class="status-label">Energy</span>
+            <div class="status-bar-wrapper" aria-label="Energy level" role="img">
+              <div id="energy-bar" class="status-bar fill-good"></div>
+            </div>
+            <span id="energy-value" class="status-value">70</span>
+          </div>
+
+          <div class="status-item">
+            <span class="status-label">Cleanliness</span>
+            <div class="status-bar-wrapper" aria-label="Cleanliness level" role="img">
+              <div id="clean-bar" class="status-bar fill-good"></div>
+            </div>
+            <span id="clean-value" class="status-value">90</span>
+          </div>
+
+          <div class="status-item">
+            <span class="status-label">Health</span>
+            <div class="status-bar-wrapper" aria-label="Health level" role="img">
+              <div id="health-bar" class="status-bar fill-good"></div>
+            </div>
+            <span id="health-value" class="status-value">90</span>
+          </div>
+
+          <div class="status-item time-item">
+            <span class="status-label">Time of Day</span>
+            <span id="time-of-day" class="status-value">Day</span>
+          </div>
+        </section>
+
+        <section class="controls-panel">
+          <h2>Care Actions</h2>
+          <div class="controls-grid">
+            <button id="feed-btn" class="control-btn">
+              <span class="icon">🍖</span>
+              <span>Feed</span>
+            </button>
+            <button id="play-btn" class="control-btn">
+              <span class="icon">🎾</span>
+              <span>Play</span>
+            </button>
+            <button id="bath-btn" class="control-btn">
+              <span class="icon">🛁</span>
+              <span>Bath</span>
+            </button>
+            <button id="sleep-btn" class="control-btn">
+              <span class="icon">🌙</span>
+              <span>Sleep</span>
+            </button>
+            <button id="med-btn" class="control-btn">
+              <span class="icon">💊</span>
+              <span>Medicine</span>
+            </button>
+            <button id="reset-btn" class="control-btn secondary">
+              <span class="icon">🔄</span>
+              <span>Reset</span>
+            </button>
+          </div>
+
+          <div class="tips">
+            <h3>Tips</h3>
+            <ul>
+              <li>Keep hunger low by feeding your pet regularly.</li>
+              <li>Play to increase happiness, but it will use some energy.</li>
+               <li>Give your pet a bath to boost its happiness and keep it fresh.</li>
+               <li>Use medicine when your pet looks unwell to help it recover.</li>
+              <li>Let your pet sleep to recover energy.</li>
+              <li>If hunger gets too high or happiness too low, your pet will be sad.</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <p>Virtual Pet Simulator &middot; Built with HTML, CSS &amp; JavaScript</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+

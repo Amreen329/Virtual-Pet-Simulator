@@ -1,0 +1,643 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #f6f9ff 0%, #dde6ff 40%, #c2cffc 100%);
+  color: #152238;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app {
+  background: #ffffff;
+  width: min(1100px, 95vw);
+  border-radius: 24px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+  padding: 24px 26px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.app-header {
+  text-align: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.app-header h1 {
+  font-size: clamp(1.7rem, 2vw + 1rem, 2.2rem);
+  letter-spacing: 0.04em;
+}
+
+.subtitle {
+  margin-top: 4px;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.app-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: 18px 20px;
+}
+
+.pet-panel {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  background: linear-gradient(180deg, #e0edff 0%, #f4f5ff 50%, #fdfcfb 100%);
+  border-radius: 18px;
+  padding: 16px 18px 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.scene {
+  position: relative;
+  height: 260px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #cfe4ff 0%, #9acbff 45%, #68aeea 100%);
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.sun,
+.moon {
+  position: absolute;
+  top: 18px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.sun {
+  background: radial-gradient(circle at 30% 30%, #fffbe6 0%, #ffd54a 45%, #f6a700 100%);
+  box-shadow: 0 0 18px rgba(252, 211, 77, 0.8);
+}
+
+.moon {
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #d4e4ff 50%, #7b8bb2 100%);
+  box-shadow: 0 0 18px rgba(148, 163, 184, 0.8);
+  opacity: 0;
+}
+
+.cloud {
+  position: absolute;
+  top: 26px;
+  left: -80px;
+  width: 110px;
+  height: 38px;
+  background: #ffffff;
+  border-radius: 40px;
+  box-shadow: 15px 5px 0 0 #ffffff, 40px 0 0 0 #ffffff;
+  opacity: 0.7;
+  animation: float-cloud 34s linear infinite;
+}
+
+.cloud-2 {
+  top: 60px;
+  animation-duration: 40s;
+  opacity: 0.85;
+  transform: scale(1.1);
+}
+
+@keyframes float-cloud {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(240%);
+  }
+}
+
+.ground {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: -40px;
+  height: 120px;
+  background: radial-gradient(circle at top, #a7f3d0 0%, #4ade80 45%, #16a34a 100%);
+  border-radius: 50%;
+}
+
+.pet-container {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+  padding-bottom: 24px;
+}
+
+.pet {
+  position: relative;
+  width: 140px;
+  height: 150px;
+  animation: idle-bounce 2.4s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes idle-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.pet-face {
+  position: relative;
+  width: 110px;
+  height: 90px;
+  /* White dog face */
+  background: radial-gradient(circle at 30% 20%, #ffffff 0%, #ffffff 55%, #e5e7eb 100%);
+  margin: 0 auto;
+  border-radius: 55px 55px 45px 45px;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.22);
+  z-index: 2;
+}
+
+.pet-ear {
+  position: absolute;
+  top: -20px;
+  width: 32px;
+  height: 40px;
+  /* Soft light-grey ears on white dog */
+  background: radial-gradient(circle at 30% 20%, #f9fafb 0%, #e5e7eb 70%, #d4d4d8 100%);
+  border-radius: 24px 24px 6px 6px;
+}
+
+.ear-left {
+  left: 14px;
+  transform: rotate(-8deg);
+}
+
+.ear-right {
+  right: 14px;
+  transform: rotate(8deg);
+}
+
+.pet-eye {
+  position: absolute;
+  top: 34px;
+  width: 14px;
+  height: 18px;
+  background: #0f172a;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.35);
+}
+
+.eye-left {
+  left: 26px;
+}
+
+.eye-right {
+  right: 26px;
+}
+
+.pet-eye::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  width: 5px;
+  height: 5px;
+  background: rgba(248, 250, 252, 0.9);
+  border-radius: 50%;
+}
+
+.pet-mouth {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  width: 28px;
+  height: 18px;
+  border-radius: 0 0 18px 18px;
+  border: 3px solid #0f172a;
+  border-top: none;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at 50% 0, #fecaca 0%, #fee2e2 40%, transparent 70%);
+}
+
+.pet-blush {
+  position: absolute;
+  bottom: 26px;
+  width: 16px;
+  height: 10px;
+  background: radial-gradient(circle, rgba(248, 113, 113, 0.35), transparent);
+  opacity: 0.9;
+}
+
+.blush-left {
+  left: 16px;
+}
+
+.blush-right {
+  right: 16px;
+}
+
+.pet-body {
+  position: absolute;
+  left: 50%;
+  /* Raise body and slightly enlarge so it overlaps the head, forming one continuous shape */
+  bottom: -18px;
+  width: 96px;
+  height: 72px;
+  transform: translateX(-50%);
+  /* White dog body */
+  background: radial-gradient(circle at 40% 0, #ffffff 0%, #ffffff 55%, #e5e7eb 100%);
+  border-radius: 70px 70px 40px 40px;
+  box-shadow: 0 8px 0 rgba(15, 23, 42, 0.1);
+  z-index: 1;
+}
+
+/* Small "neck" connector to make the head and body feel like one smooth shape */
+.pet-body::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 78px;
+  height: 28px;
+  background: radial-gradient(circle at 50% 0, #ffffff 0%, #ffffff 60%, #e5e7eb 100%);
+  border-radius: 40px;
+}
+
+.pet-tail {
+  position: absolute;
+  right: 10px;
+  bottom: -10px;
+  width: 46px;
+  height: 16px;
+  border-radius: 20px;
+  /* White dog tail */
+  background: radial-gradient(circle at 10% 50%, #ffffff 0%, #e5e7eb 70%, #d4d4d8 100%);
+  transform-origin: left center;
+  animation: tail-wag 1.3s ease-in-out infinite;
+}
+
+/* Light dirt spots when pet starts getting dirty */
+.pet.is-dirty::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 80px;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(148, 81, 30, 0.28) 0, transparent 40%),
+    radial-gradient(circle at 75% 40%, rgba(120, 63, 4, 0.22) 0, transparent 45%),
+    radial-gradient(circle at 40% 80%, rgba(100, 50, 10, 0.2) 0, transparent 50%);
+}
+
+/* Heavier dirt when very dirty */
+.pet.is-very-dirty::after {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(120, 53, 15, 0.5) 0, transparent 40%),
+    radial-gradient(circle at 75% 40%, rgba(100, 44, 10, 0.45) 0, transparent 45%),
+    radial-gradient(circle at 40% 80%, rgba(67, 20, 7, 0.4) 0, transparent 50%);
+}
+
+@keyframes tail-wag {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(16deg);
+  }
+}
+
+.pet-state-text {
+  margin-top: 14px;
+  text-align: center;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.status-panel,
+.controls-panel {
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 14px 16px 16px;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.15);
+}
+
+.status-panel h2,
+.controls-panel h2 {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+
+.status-item {
+  display: grid;
+  /* Reserve space for the label, flexible space for the bar, small fixed space for the value */
+  grid-template-columns: minmax(0, 90px) 1fr auto;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.status-label {
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.status-bar-wrapper {
+  height: 12px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.25);
+}
+
+.status-bar {
+  height: 100%;
+  width: 50%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  transition: width 0.35s ease, background 0.35s ease;
+}
+
+.status-value {
+  min-width: 36px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+  color: #0f172a;
+  overflow: hidden;
+}
+
+.fill-good {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+}
+.fill-warning {
+  background: linear-gradient(90deg, #f97316, #ea580c);
+}
+.fill-bad {
+  background: linear-gradient(90deg, #ef4444, #b91c1c);
+}
+
+.time-item {
+  border-top: 1px dashed rgba(148, 163, 184, 0.5);
+  padding-top: 8px;
+  margin-top: 4px;
+}
+
+.controls-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.control-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: radial-gradient(circle at top left, #eef2ff 0%, #4f46e5 0%, #6366f1 60%, #22d3ee 130%);
+  color: #f9fafb;
+  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.45);
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+    filter 0.15s ease-out, background 0.3s ease-out;
+}
+
+.control-btn .icon {
+  font-size: 1.1rem;
+}
+
+.control-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(79, 70, 229, 0.5);
+  filter: brightness(1.05);
+}
+
+.control-btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.7);
+}
+
+.control-btn.secondary {
+  background: radial-gradient(circle at top left, #eef2ff 0%, #64748b 0%, #475569 70%, #0f172a 130%);
+  box-shadow: 0 7px 16px rgba(15, 23, 42, 0.43);
+}
+
+.control-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 4px 10px rgba(148, 163, 184, 0.4);
+}
+
+.tips h3 {
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+  color: #475569;
+}
+
+.tips ul {
+  list-style: disc inside;
+  font-size: 0.82rem;
+  color: #64748b;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.app-footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+  padding-top: 6px;
+}
+
+.app-footer span {
+  font-weight: 500;
+}
+
+.pet.state-hungry .pet-mouth {
+  height: 8px;
+  border-radius: 18px 18px 0 0;
+  border-top: 3px solid #0f172a;
+  border-bottom: none;
+  bottom: 26px;
+}
+
+.pet.state-hungry .pet-eye {
+  height: 12px;
+  border-radius: 12px;
+}
+
+.pet.state-sad .pet-eye {
+  height: 8px;
+  border-radius: 999px;
+  top: 38px;
+}
+
+.pet.state-sad .pet-eye::after {
+  display: none;
+}
+
+.pet.state-sad .pet-mouth {
+  height: 0;
+  border-radius: 18px 18px 0 0;
+  border-top: 3px solid #0f172a;
+  border-bottom: none;
+  bottom: 26px;
+}
+
+.pet.state-sad .pet-blush {
+  opacity: 0.4;
+}
+
+.pet.state-sleeping {
+  animation: none;
+  transform-origin: center;
+}
+
+.pet.state-sleeping .pet-eye {
+  height: 4px;
+  border-radius: 999px;
+  top: 44px;
+  box-shadow: none;
+}
+
+.pet.state-sleeping .pet-eye::after {
+  display: none;
+}
+
+.pet.state-sleeping .pet-mouth {
+  height: 10px;
+  width: 22px;
+  bottom: 24px;
+}
+
+.pet.state-sleeping .pet-tail {
+  animation-duration: 2.2s;
+}
+
+.pet.state-excited {
+  animation: excited-bounce 0.6s ease-in-out infinite;
+}
+
+@keyframes excited-bounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-14px) scale(1.03);
+  }
+  70% {
+    transform: translateY(-4px);
+  }
+}
+
+.pet.state-excited .pet-mouth {
+  height: 22px;
+  width: 30px;
+}
+
+.pet.state-excited .pet-blush {
+  opacity: 1;
+}
+
+.night .scene {
+  background: linear-gradient(180deg, #020617 0%, #020617 45%, #1e293b 100%);
+}
+
+.night .ground {
+  background: radial-gradient(circle at top, #4ade80 0%, #166534 45%, #052e16 100%);
+}
+
+.night .sun {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.night .moon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.night .cloud {
+  opacity: 0.25;
+}
+
+@media (max-width: 850px) {
+  .app {
+    padding: 16px 14px 14px;
+  }
+
+  .app-main {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+  }
+
+  .pet-panel {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+  }
+
+  .status-panel {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+  }
+
+  .controls-panel {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+  }
+}
+
+@media (max-width: 520px) {
+  .scene {
+    height: 230px;
+  }
+
+  .controls-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .status-item {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .status-value {
+    grid-column: 2 / 3;
+    justify-self: end;
+  }
+}
+
